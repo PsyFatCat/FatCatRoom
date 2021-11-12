@@ -30,15 +30,40 @@ def callback():
 
         return "OK"
 
+intimacy, passion, commitment = 0
+lover = ''
+sternberg = ''
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     get_message = event.message.text
     
-    if get_message == '心理測驗':
-        reply = TextSendMessage(text = '第一題\n第二題\n第三題')
+    if get_message == '心理測驗' & sternberg == '':
+    	sternberg = 'intimacy'
+        reply = TextSendMessage(text = '你愛的人是誰?(請輸入名字或暱稱)')
         line_bot_api.reply_message(event.reply_token, reply)
+    elif sternberg == 'intimacy':
+    	sternberg = 'passion'
+    	lover = event.message.text
+    	reply = TextSendMessage(text = f'1. 你喜歡{lover}嗎?\n2. hi{lover}')
+        line_bot_api.reply_message(event.reply_token, reply)
+    elif sternberg == 'passion':
+    	sternberg = 'commitment'
+    	intimacy = int(event.message.text)
+    	reply = TextSendMessage(text = f'1. 激情{lover}\n2. hi{lover}')
+        line_bot_api.reply_message(event.reply_token, reply)
+    elif sternberg == 'commitment':
+    	sternberg = 'final'
+    	passion = int(event.message.text)
+    	reply = TextSendMessage(text = f'1. 承諾{lover}\n2. hi{lover}')
+        line_bot_api.reply_message(event.reply_token, reply)
+    elif sternberg == 'final':
+    	commitment = int(event.message.text)
+    	reply = TextSendMessage(text = f'親密{intimacy}\n激情{passion}\n承諾{commitment}')
+        line_bot_api.reply_message(event.reply_token, reply)
+        intimacy, passion, commitment = 0
+        sternberg = ''
+    	lover = ''
     else:
         reply = TextSendMessage(text=f"{get_message}")
         line_bot_api.reply_message(event.reply_token, reply)
-
