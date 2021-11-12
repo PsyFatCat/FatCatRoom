@@ -41,11 +41,6 @@ def handle_message(event):
     if get_message == '心理測驗':
         reply = TextSendMessage(text = '你愛的人是誰?(請輸入名字或暱稱)')
         line_bot_api.reply_message(event.reply_token, reply)
-        state = 'psyTest'
     else:
-        if state == 'psyTest':
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text = f'你愛{lover}'))
-            state = ''
-        else:
-            reply = TextSendMessage(text=f"{get_message}")
-            line_bot_api.reply_message(event.reply_token, reply)
+        reply = TextSendMessage(text=f"{get_message}")
+        line_bot_api.reply_message(event.reply_token, reply)
