@@ -38,27 +38,27 @@ sternberg = ''
 def handle_message(event):
     get_message = event.message.text
     
-    if get_message == '心理測驗' & sternberg == '':
+    if (get_message == '心理測驗') & (sternberg == ''):
     	sternberg = 'intimacy'
         reply = TextSendMessage(text = '你愛的人是誰?(請輸入名字或暱稱)')
         line_bot_api.reply_message(event.reply_token, reply)
     elif sternberg == 'intimacy':
     	sternberg = 'passion'
-    	lover = event.message.text
+    	lover = get_message
     	reply = TextSendMessage(text = f'1. 你喜歡{lover}嗎?\n2. hi{lover}')
         line_bot_api.reply_message(event.reply_token, reply)
     elif sternberg == 'passion':
     	sternberg = 'commitment'
-    	intimacy = int(event.message.text)
+    	intimacy = int(get_message)
     	reply = TextSendMessage(text = f'1. 激情{lover}\n2. hi{lover}')
         line_bot_api.reply_message(event.reply_token, reply)
     elif sternberg == 'commitment':
     	sternberg = 'final'
-    	passion = int(event.message.text)
+    	passion = int(get_message)
     	reply = TextSendMessage(text = f'1. 承諾{lover}\n2. hi{lover}')
         line_bot_api.reply_message(event.reply_token, reply)
     elif sternberg == 'final':
-    	commitment = int(event.message.text)
+    	commitment = int(get_messaget)
     	reply = TextSendMessage(text = f'親密{intimacy}\n激情{passion}\n承諾{commitment}')
         line_bot_api.reply_message(event.reply_token, reply)
         intimacy, passion, commitment = 0
