@@ -32,20 +32,20 @@ def callback():
 
 intimacy, passion, commitment = 0
 lover = ''
-sternberg = ''
+state = ''
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     get_message = event.message.text
     
-    if (get_message == '心理測驗') & (sternberg == ''):
-    	sternberg = 'intimacy'
+    if get_message == '心理測驗':
         reply = TextSendMessage(text = '你愛的人是誰?(請輸入名字或暱稱)')
         line_bot_api.reply_message(event.reply_token, reply)
-    elif sternberg == 'intimacy':
-        lover = get_message
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = f'你愛{lover}'))
-        sternberg == ''
+        state = 'psyTest'
     else:
-        reply = TextSendMessage(text=f"{get_message}")
-        line_bot_api.reply_message(event.reply_token, reply)
+        if state == 'psyTest':
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text = f'你愛{lover}'))
+            state = ''
+        else:
+            reply = TextSendMessage(text=f"{get_message}")
+            line_bot_api.reply_message(event.reply_token, reply)
