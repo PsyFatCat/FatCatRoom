@@ -30,10 +30,6 @@ def callback():
 
         return "OK"
 
-intimacy, passion, commitment = 0
-lover = ''
-state = ''
-
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     get_message = event.message.text
