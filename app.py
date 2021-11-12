@@ -14,7 +14,7 @@ line_bot_api = LineBotApi(os.environ.get("CHANNEL_ACCESS_TOKEN"))
 handler = WebhookHandler(os.environ.get("CHANNEL_SECRET"))
 
 lover = ''
-state = ''
+state = 'oh'
 
 @app.route("/", methods=["GET", "POST"])
 def callback():
@@ -37,7 +37,8 @@ def handle_message(event):
     get_message = event.message.text
     
     if get_message == '心理測驗':
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = '輸入你的另一半的名字或暱稱'))
+        state = 'hi'
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = state + ',輸入你的另一半的名字或暱稱'))
     else:
-        reply = TextSendMessage(text=f"{get_message}")
+        reply = TextSendMessage(text=f"{state},{get_message}")
         line_bot_api.reply_message(event.reply_token, reply)
