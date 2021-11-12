@@ -66,6 +66,7 @@ def handle_message(event):
                     love_index = 6
                 else:
                     love_index = 7
-        love_type = ['完整的愛','浪漫的愛','陪伴的愛','喜歡','愚昧的愛','癡迷的愛','空洞的愛','沒有愛']
-        reply = TextSendMessage(text=f'你們之間是{love_type[love_index]}\n親密: {score[0]}\n激情: {score[1]}\n承諾: {score[2]}')
+        love_type = ['完整的愛','浪漫的愛','陪伴的愛','喜歡','愚昧的愛','癡迷的愛','空洞的愛','沒有愛的']
+        love_describe = ['你們的愛情擁有了所有重要的元素\n祝福與期待你們能維繫這得來不易的愛情','如同羅密歐與茱麗葉般充滿浪漫色彩的愛情','是老夫老妻、靈魂伴侶呢','是朋友間的相互欣賞與喜歡','承諾可能是基於短暫的激情，要思考如何增加親密情感連結','你可能是中了一見鍾情的症狀XD','空空的','嗚嗚嗚']
+        reply = TextSendMessage(text=f'你們之間是{love_type[love_index]}\n\n{love_describe[love_index]}\n\n親密: {score[0]}\n激情: {score[1]}\n承諾: {score[2]}')
         line_bot_api.reply_message(event.reply_token, reply)
