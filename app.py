@@ -34,7 +34,11 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     get_message = event.message.text
+    
+    if get_message == '心理測驗':
+        reply = TextSendMessage(text = '第一題\n第二題\n第三題')
+        line_bot_api.reply_message(event.reply_token, reply)
+    else:
+        reply = TextSendMessage(text=f"{get_message}")
+        line_bot_api.reply_message(event.reply_token, reply)
 
-    # Send To Line
-    reply = TextSendMessage(text=f"{get_message}")
-    line_bot_api.reply_message(event.reply_token, reply)
