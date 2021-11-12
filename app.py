@@ -38,13 +38,6 @@ def handle_message(event):
     
     if get_message == '心理測驗':
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = '輸入你的另一半的名字或暱稱'))
-        state = '心理測驗'
     else:
-        if state == '心理測驗':
-            lover = get_message
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text = f'你的另一半是{}'))
-            state = ''
-            lover = ''
-        else:
-            reply = TextSendMessage(text=f"{get_message}")
-            line_bot_api.reply_message(event.reply_token, reply)
+        reply = TextSendMessage(text=f"{get_message}")
+        line_bot_api.reply_message(event.reply_token, reply)
