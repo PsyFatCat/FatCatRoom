@@ -44,5 +44,28 @@ def handle_message(event):
         for i in range(3):
             for j in get_message[i]:
                 score[i] += int(j)
-        reply = TextSendMessage(text=f'親密: {score[0]}\n激情: {score[1]}\n承諾: {score[2]}')
+        if score[0] >= 45:
+            if score[1] >= 45:
+                if score[2] >= 45:
+                    love_index = 0
+                else:
+                    love_index = 1
+            else:
+                if score[2] >= 45:
+                    love_index = 2
+                else:
+                    love_index = 3
+        else:
+            if score[1] >= 45:
+                if score[2] >= 45:
+                    love_index = 4
+                else:
+                    love_index = 5
+            else:
+                if score[2] >= 45:
+                    love_index = 6
+                else:
+                    love_index = 7
+        love_tyoe = ['完整的愛','浪漫的愛','陪伴的愛','喜歡','愚昧的愛','癡迷的愛','空洞的愛','沒有愛']
+        reply = TextSendMessage(text=f'你們之間是{love_type[love_index]}\n親密: {score[0]}\n激情: {score[1]}\n承諾: {score[2]}')
         line_bot_api.reply_message(event.reply_token, reply)
