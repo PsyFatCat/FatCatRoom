@@ -45,29 +45,7 @@ def handle_message(event):
         for i in range(3):
             for j in raw_scores[i]:
                 score[i] += int(j)
-        if score[0] >= 45:
-            if score[1] >= 45:
-                if score[2] >= 45:
-                    love_index = 0
-                else:
-                    love_index = 1
-            else:
-                if score[2] >= 45:
-                    love_index = 2
-                else:
-                    love_index = 3
-        else:
-            if score[1] >= 45:
-                if score[2] >= 45:
-                    love_index = 4
-                else:
-                    love_index = 5
-            else:
-                if score[2] >= 45:
-                    love_index = 6
-                else:
-                    love_index = 7
-        love_type = ['完整的愛','浪漫的愛','陪伴的愛','喜歡','愚昧的愛','癡迷的愛','空洞的愛','沒有愛的']
-        love_describe = ['你們的愛情擁有了所有重要的元素\n祝福與期待你們能維繫這得來不易的愛情','如同羅密歐與茱麗葉般充滿浪漫色彩的愛情','是老夫老妻、靈魂伴侶呢','是朋友間的相互欣賞與喜歡','承諾可能是基於短暫的激情，要思考如何增加親密情感連結','你可能是中了一見鍾情的症狀XD','空空的','嗚嗚嗚']
-        reply = TextSendMessage(text=f'你們之間是{love_type[love_index]}\n\n{love_describe[love_index]}\n\n親密: {score[0]}\n激情: {score[1]}\n承諾: {score[2]}')
+        love_code = ''.join(['1' if i >= 45 else '0' for i in score])
+        love_dic = {'111':['完整的愛', '你們的愛情擁有了所有重要的元素\n祝福與期待你們能維繫這得來不易的愛情'], '110':['浪漫的愛', '如同羅密歐與茱麗葉般充滿浪漫色彩的愛情'], '101':['陪伴的愛', '是老夫老妻、靈魂伴侶呢'], '100':['喜歡', '是朋友間的相互欣賞與喜歡'], '011':['愚昧的愛', '承諾可能是基於短暫的激情\n要思考如何增加親密情感連結'], '010':['癡迷的愛', '你可能是中了一見鍾情的症狀XD'], '001':['空洞的愛', '空空的'], '000':['沒有愛的', '嗚嗚嗚']}
+        reply = TextSendMessage(text=f'你們之間是{love_dic[love_code][0]}\n\n{love_dic[love_code][1]}\n\n親密: {score[0]}\n激情: {score[1]}\n承諾: {score[2]}')
         line_bot_api.reply_message(event.reply_token, reply)
