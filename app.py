@@ -52,7 +52,7 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, reply)
     if get_message[0] == 'Procrastination':
         if len(get_message) == 5:
-            raw_scores = ''.join(get_message[1:])
+            raw_score = ''.join(get_message[1:])
             revItem = [2, 3, 5, 7, 10, 12, 13, 14, 17, 19]
             tran_score = [6-int(raw_score[i]) if i in revItem else int(raw_score[i]) for i in range(20)]
             fac_score = [0, 0, 0, 0, 0]
