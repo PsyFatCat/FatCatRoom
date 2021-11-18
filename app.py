@@ -34,7 +34,7 @@ def handle_message(event):
     get_message = event.message.text.split()
     
     if get_message[0] == '心理測驗':
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = '愛情三元素測驗請輸入:\n「\nSternberg 你的另一半稱呼\n」\n\n拖延症測驗請輸入:\n「\nProcrastination\n」'))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = '拖延症測驗請輸入:\n「Procrastination」'))
     if get_message[0] == 'Sternberg':
         if len(get_message) == 10:
             score = [0, 0, 0]
