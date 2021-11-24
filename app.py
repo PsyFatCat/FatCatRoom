@@ -43,7 +43,7 @@ def handle_message(event):
             for key, value in ArtDict.items():
                 if get_message[0] in value:
                     TextArt += f'{key}\n{value[0]}\n\n'
-            line_bot_api.relpy_message(event.reply_token, TextSendMessage(text = TextArt))
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text = TextArt))
         else:
             reply = TextSendMessage(text=f'目前心理肥宅貓沒有關於 {get_message[0][1:]} 的文章，趕快去ig私訊宅貓你想看的文章！')
             line_bot_api.reply_message(event.reply_token, reply)
