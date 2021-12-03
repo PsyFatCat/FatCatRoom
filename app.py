@@ -49,6 +49,31 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, reply)
     if get_message[0] == '心理測驗':
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = '拖延症測驗請輸入:\n「Procrastination」'))
+    if get_message[0] == 'Psychopathy':
+        if len(get_message) == 5:
+            raw_score = [int(i) for i in ''.join(get_message[1:])]
+            fac_score = [0, 0, 0, 0, 0]
+            fac_criteria = [0, 6, 6, 7.5, 7.5]
+            fac_item = [1, 1, 3, 1, 1, 2, 2, 2, 3, 4, 0, 4, 3, 3, 3, 2, 0, 4, 4, 4]
+            fac_domain = ['', '人際關係', '情感', '生活風格', '反社會']
+            for i, j in zip(raw_score, fac_item):
+                fac_score[j] += i
+            if sum(fac_score) < 30:
+                result_text = '結果顯示你沒有心理病態特質噢，恭喜XD'
+            else:
+                fac_text = []
+                for i in range(1,5):
+                    if fac_score[i] >= fac_criteria[i]:
+                        fac_text.append(fac_domain[i])
+                if fac_text:
+                    result_text = '結果顯示你可能有心理病態特質><\n你的心理病態特質出現在'+', '.join(fac_text)+'面向上\n不過實際狀況仍須依專業臨床工作者的評估噢！'
+                else:
+                    result_text = '結果顯示你可能有心理病態特質><，不過實際狀況仍須依專業臨床工作者的評估噢！'
+            reply = TextSendMessage(text = result_text + '\n\n馬上前往了解更多心理病態知識: https://www.instagram.com/')
+            line_bot_api.reply_message(event.reply_token, reply)
+        else:
+            reply = TextSendMessage(text = '請判斷您與以下每一個陳述句的符合程度\n0分，表示不符合\n1分，表示部分符合\n2分，表示符合\n\n請依照以下格式依序回應噢！\n-\n\nPsychopathy\n22222 11220\n12212 22102\n\n-\n1.我是能言善道、會做表面功夫、且常被認為是有魅力的人\n2.我有十分良好的自我價值感，甚至有些自戀\n3.我容易感到無聊，常需要追求刺激\n4.我慣性說謊或喜歡欺騙別人\n5.我是一個奸巧且會操弄別人以獲取好處的人\n6.我很少對於我不好的行為感到後悔或罪惡\n7.我看似能表達強烈情緒，但實際上我內心沒有太大的情緒感受\n8.我是冷酷且缺乏同理心的人\n9.我雖然能自己賺錢生活，但傾向仰賴他人經濟支持而生活\n10.我很難控制自己的行為\n11.我的性生活很淫亂\n12.我小時候就常有違規的行為（如，偷竊、欺瞞、...）\n13.我缺乏實際且長遠的目標規劃\n14.我是衝動的\n15.我是不負責任的\n16.我常無法或不願為自己的行為負責\n17.我有過許多短期的伴侶關係（結婚或具承諾的親密關係）\n18.我有青少年的犯罪紀錄\n19.我曾被撤銷假釋（假釋中故意再犯）\n20.我的犯罪類型十分多樣')
+            line_bot_api.reply_message(event.reply_token, reply)
     if get_message[0] == 'Sternberg':
         if len(get_message) == 10:
             score = [0, 0, 0]
