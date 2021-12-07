@@ -130,7 +130,7 @@ def handle_message(event):
             reply = TextSendMessage(text=f'目前心理肥宅貓沒有關於 {get_message[0][1:]} 的文章，趕快去ig私訊宅貓你想看的文章！')
             line_bot_api.reply_message(event.reply_token, reply)
     if get_message[0] == '心理測驗':
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = '拖延症測驗請輸入:\n「Procrastination」'))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = '拖延症測驗請輸入:\nProcrastination\n\n心理病態特質測驗請輸入：\nPsychopathy\n\n(請注意大小寫噢！)'))
     if get_message[0] == 'Psychopathy':
         if len(get_message) == 5:
             raw_score = [int(i) for i in ''.join(get_message[1:])]
@@ -186,6 +186,6 @@ def handle_message(event):
             reply = TextSendMessage(text = f'你的拖延分數是「{sum(fac_score)}」分\n你比 {dic_per[sum(fac_score)]}% 的台灣人還要會拖\n\n細項分析:\n就是愛拖(T分數): {fac_T[0]}\n時間管理困難(T分數): {fac_T[1]}\n死到臨頭型(T分數): {fac_T[2]}\n動作慢(T分數): {fac_T[3]}\n\nP.S. T分數平均為50，標準差為10，如果超過50分表示比平均高，高過越多就越需留意噢XD\n\n延伸閱讀:\n拖延心理學: https://www.instagram.com/p/CL0tsmasepr/\n台灣人拖延調查分析: https://www.instagram.com/p/CMZ87C3sIk3/')
             line_bot_api.reply_message(event.reply_token, reply)
         else:
-            reply = TextSendMessage(text='一般人會使用以下的陳述句來形容自己\n請判斷您與以下每一個陳述句的符合程度\n1分表示非常不符合\n5分表示非常符合\n\n請依照以下格式依序回應噢！\n\n「\nProcrastination\n31452 13422\n23334 45222\n」\n\n1.我經常在做我幾天前就想做的事情\n2.直到快要交作業前我才會寫它\n3.當我看完圖書館借來的書後，不管是否到期，我都會馬上歸還\n4.每當早上起床時間一到，我幾乎都馬上起床\n5.在我寫完信後，回過個幾天才寄出\n6.我一般都是立刻回撥電話\n7.即使是很簡單的工作，我也很少在幾天內完成\n8.我經常很快速地做出決定\n9.我通常會延遲我必須要做的工作\n10.我經常需要很匆忙地趕作業才得以準時完成它\n11.當準備要外出時，我很少在最後一刻才發現有什麼事情必須去做\n12.在為一些有截止期限的事情做準備時，我經常浪費時間做其他事\n13.我喜歡提前赴約\n14.我經常在作業指派後沒多久就開始做作業\n15.我經常比必須完工的時間更早完成工作\n16.我總是在最後一刻才去買生日禮物或聖誕禮物\n17.即使是必需品，我也經常到最後一刻才買\n18.我經常能完成我一天中計劃好要做的所有事\n19.我一直在說「我明天會做」\n20.在晚上休息之前我通常會先安頓好所有必須做的事情')
+            reply = TextSendMessage(text='一般人會使用以下的陳述句來形容自己\n請判斷您與以下每一個陳述句的符合程度\n1分表示非常不符合\n5分表示非常符合\n\n請依照以下格式依序回應噢！\n-\n\n\nProcrastination\n31452 13422\n23334 45222\n\n\n-\n1.我經常在做我幾天前就想做的事情\n2.直到快要交作業前我才會寫它\n3.當我看完圖書館借來的書後，不管是否到期，我都會馬上歸還\n4.每當早上起床時間一到，我幾乎都馬上起床\n5.在我寫完信後，回過個幾天才寄出\n6.我一般都是立刻回撥電話\n7.即使是很簡單的工作，我也很少在幾天內完成\n8.我經常很快速地做出決定\n9.我通常會延遲我必須要做的工作\n10.我經常需要很匆忙地趕作業才得以準時完成它\n11.當準備要外出時，我很少在最後一刻才發現有什麼事情必須去做\n12.在為一些有截止期限的事情做準備時，我經常浪費時間做其他事\n13.我喜歡提前赴約\n14.我經常在作業指派後沒多久就開始做作業\n15.我經常比必須完工的時間更早完成工作\n16.我總是在最後一刻才去買生日禮物或聖誕禮物\n17.即使是必需品，我也經常到最後一刻才買\n18.我經常能完成我一天中計劃好要做的所有事\n19.我一直在說「我明天會做」\n20.在晚上休息之前我通常會先安頓好所有必須做的事情')
             line_bot_api.reply_message(event.reply_token, reply)
 
