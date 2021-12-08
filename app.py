@@ -102,7 +102,7 @@ def handle_message(event):
             ---
             心理系在幹嘛 https://www.instagram.com/p/CStMzzyHyYY/ #社會心理學 #認知心理學 #發展心理學 #性格心理學 #知覺心理學 #生理心理學 #變態心理學 #心理統計 #心理測驗 #心理實驗 #心理系 #心理學 #心理師 #臨床 #諮商 #科學 #讀心術 #指考 #學測 #考大學 #轉學考 #選系 #選校
             ---
-            閣樓裡的側寫師-什麼是罪犯側寫 https://www.instagram.com/p/CTHMUeRHVd8/ #心理學 #犯罪學 #犯罪心理學 #罪犯側寫 #暴力 #犯罪 #偵查 #偵探 #犯罪現場 #受害者 #邏輯 #歸納法 #演繹法 #科學 #psychology #criminal #offender #profiling
+            閣樓裡的側寫師-什麼是罪犯側寫 https://www.instagram.com/p/CTHMUeRHVd8/ #心理學 #犯罪學 #犯罪心理學 #罪犯側寫 #暴力 #犯罪 #偵查 #偵探 #犯罪現場 #受害者 #邏輯 #歸納法 #演繹法 #科學 #側寫師 #閣樓裡的側寫師 #psychology #criminal #offender #profiling
             ---
             疫苗心理學-心理副作用 https://www.instagram.com/p/CTZvNCipUtl/ #心理學 #認知 #歸因 #焦慮 #疫苗 #AZ #莫德納 #BNT #高端 #疫情 #covid_19 #安慰劑 #反安慰劑 #CDC #抽獎 #心理 #心情 #psychology #vaccine #moderna #肺炎
             ---
@@ -118,7 +118,9 @@ def handle_message(event):
             ---
             宅貓統計教室-遊戲橘子欺騙玩家? https://www.instagram.com/p/CVIgQj_pdL9/ #心理學 #科學 #統計 #丁特 #遊戲橘子 #天堂m #機率 #二項分配 #數學 #轉蛋法 #dinter #psychology #statistics #probability
             ---
-            宅貓機器人-拖延症心理測驗 https://www.instagram.com/p/CWcfwxBLGP7/ #心理學 #肥宅貓心理測驗 #心理測驗 #拖延症 #拖延症心理測驗 #肥宅貓 #line #linebot #聊天機器人 #熬夜 #工作 #功課 #做不完 #宅貓心理室'''
+            宅貓機器人-拖延症心理測驗 https://www.instagram.com/p/CWcfwxBLGP7/ #心理學 #肥宅貓心理測驗 #心理測驗 #拖延症 #拖延症心理測驗 #肥宅貓 #line #linebot #聊天機器人 #熬夜 #工作 #功課 #做不完 #宅貓心理室
+            ---
+            閣樓裡的側寫師-心理病態 https://www.instagram.com/p/CXN5CBbJVMU/ #反社會型人格 #反社會人格 #反社會 #心理病態 #心理變態 #心理學 #犯罪學 #犯罪心理學 #罪犯側寫 #暴力 #犯罪 #犯罪 #科學 #側寫師 #閣樓裡的側寫師 #psychopathy #sociopath #psychopath #psychology #criminal #offender #profiling'''
             hi2 = hi.split('---')
             ArtDict = {i.split()[0]:i.split()[1:] for i in hi2}
             TextArt = f'想看看 {get_message[0][1:]} 相關的文章?\n'
@@ -151,7 +153,7 @@ def handle_message(event):
                     result_text = '結果顯示你可能有心理病態特質><\n\n你的心理病態特質出現在'+', '.join(fac_text)+'面向上\n\n不過實際狀況仍須依專業臨床工作者的評估噢！'
                 else:
                     result_text = '結果顯示你可能有心理病態特質><\n\n不過實際狀況仍須依專業臨床工作者的評估噢！'
-            reply = TextSendMessage(text = result_text + '\n\n\n馬上前往了解更多心理病態知識: https://www.instagram.com/')
+            reply = TextSendMessage(text = result_text + '\n\n\n馬上前往了解更多心理病態知識: https://www.instagram.com/p/CXN5CBbJVMU/')
             line_bot_api.reply_message(event.reply_token, reply)
         else:
             reply = TextSendMessage(text = '請判斷您與以下每一個陳述句的符合程度\n0分，表示不符合\n1分，表示部分符合\n2分，表示符合\n\n請依照以下格式依序回應噢！\n-\n\nPsychopathy\n22222 11220\n12212 22102\n\n-\n1.我是能言善道、會做表面功夫、且常被認為是有魅力的人\n2.我有十分良好的自我價值感，甚至有些自戀\n3.我容易感到無聊，常需要追求刺激\n4.我慣性說謊或喜歡欺騙別人\n5.我是一個奸巧且會操弄別人以獲取好處的人\n6.我很少對於我不好的行為感到後悔或罪惡\n7.我看似能表達強烈情緒，但實際上我內心沒有太大的情緒感受\n8.我是冷酷且缺乏同理心的人\n9.我雖然能自己賺錢生活，但傾向仰賴他人經濟支持而生活\n10.我很難控制自己的行為\n11.我的性生活很淫亂\n12.我小時候就常有違規的行為（如，偷竊、欺瞞、...）\n13.我缺乏實際且長遠的目標規劃\n14.我是衝動的\n15.我是不負責任的\n16.我常無法或不願為自己的行為負責\n17.我有過許多短期的伴侶關係（結婚或具承諾的親密關係）\n18.我有青少年的犯罪紀錄\n19.我曾被撤銷假釋（假釋中故意再犯）\n20.我的犯罪類型十分多樣')
