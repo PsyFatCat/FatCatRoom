@@ -133,6 +133,18 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token, reply)
     if get_message[0] == '心理測驗':
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = '拖延症測驗請輸入:\nProcrastination\n\n心理病態特質測驗請輸入：\nPsychopathy\n\n(請注意大小寫噢！)'))
+    if get_message[0] == 'SexualAddiction':
+        if len(get_message) == 3:
+            raw_score = sum([int(i) for i in ''.join(get_message[1:])])
+            if raw_score < 23:
+                result_text = f'你的得分是{raw_score}\n結果顯示你沒有性成癮噢，恭喜XD'
+            else:
+                result_text = f'你的得分是{raw_score}\n結果顯示你可能有性成癮><\n\n不過實際狀況仍須依專業臨床工作者的評估噢！'
+            reply = TextSendMessage(text = result_text + '\n\n\n馬上前往了解更多心理學知識: https://www.instagram.com/')
+            line_bot_api.reply_message(event.reply_token, reply)
+        else:
+            reply = TextSendMessage(text = '請判斷您與以下每一個陳述句的符合程度\n1分，表示不符合\n2分，表示部分符合\n3分，表示符合\n4分表示完全符合\n\n請依照以下格式依序回應噢！\n-\n\nSexualAddiction\n13112 41124\n\n-\n1.我的性慾阻礙到了我的人際關係\n2.我的性行為及對性的想法造成我生活上的困擾\n3.我對性愛的渴望危害到我的日常生活\n4.我偶爾會因為我的性行為造成我違背承諾或失責\n5.我有時候會性飢渴到無法控制自己\n6.我發現我在工作時也會想到性\n7.我對性的想法與感受比對我自己本身還強烈\n8.我必須很努力的去控制我對性的想法及行為\n9.我比我希望的還要多地去想到性\n10.對我來說很難找到一個像我一樣想性愛的性伴侶')
+            line_bot_api.reply_message(event.reply_token, reply)
     if get_message[0] == 'Psychopathy':
         if len(get_message) == 5:
             raw_score = [int(i) for i in ''.join(get_message[1:])]
