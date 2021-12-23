@@ -136,7 +136,7 @@ def handle_message(event):
             reply = TextSendMessage(text=f'目前心理肥宅貓沒有關於 {get_message[0][1:]} 的文章，趕快去ig私訊宅貓你想看的文章！')
             line_bot_api.reply_message(event.reply_token, reply)
     if get_message[0] == '心理測驗':
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = '拖延症測驗請輸入:\nProcrastination\n\n心理病態特質測驗請輸入：\nPsychopathy\n\n(請注意大小寫噢！)'))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = '拖延症測驗請輸入:\nProcrastination\n\n心理病態特質測驗請輸入：\nPsychopathy\n\n性成癮測驗請輸入：\nSexualAddiction\n\n(請注意大小寫噢！)'))
     if get_message[0] == 'SexualAddiction':
         if len(get_message) == 3:
             raw_score = sum([int(i) for i in ''.join(get_message[1:])])
