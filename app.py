@@ -120,7 +120,11 @@ def handle_message(event):
             ---
             宅貓機器人-拖延症心理測驗 https://www.instagram.com/p/CWcfwxBLGP7/ #心理學 #肥宅貓心理測驗 #心理測驗 #拖延症 #拖延症心理測驗 #肥宅貓 #line #linebot #聊天機器人 #熬夜 #工作 #功課 #做不完 #宅貓心理室
             ---
-            閣樓裡的側寫師-心理病態 https://www.instagram.com/p/CXN5CBbJVMU/ #反社會型人格 #反社會人格 #反社會 #心理病態 #心理變態 #心理學 #犯罪學 #犯罪心理學 #罪犯側寫 #暴力 #犯罪 #犯罪 #科學 #側寫師 #閣樓裡的側寫師 #psychopathy #sociopath #psychopath #psychology #criminal #offender #profiling'''
+            閣樓裡的側寫師-心理病態 https://www.instagram.com/p/CXN5CBbJVMU/ #反社會型人格 #反社會人格 #反社會 #心理病態 #心理變態 #心理學 #犯罪學 #犯罪心理學 #罪犯側寫 #暴力 #犯罪 #犯罪 #科學 #側寫師 #閣樓裡的側寫師 #psychopathy #sociopath #psychopath #psychology #criminal #offender #profiling
+            ---
+            閣樓裡的側寫師-反社會型人格 https://www.instagram.com/p/CXiFerxJx3F/ #反社會型人格 #反社會人格 #反社會 #心理病態 #心理變態 #心理學 #犯罪學 #犯罪心理學 #罪犯側寫 #暴力 #犯罪 #犯罪 #科學 #側寫師 #閣樓裡的側寫師 #psychopathy #sociopath #psychopath #psychology #criminal #offender #profiling
+            ---
+            脫魯指南-Part_IV-聖誕節一起去看恐怖電影吧 https://www.instagram.com/p/CXvAvglLDib/ #聖誕節 #脫單 #脫魯指南 #心理學 #社會心理學 #戀愛心理學 #戀愛 #愛情 #感情 #吸引力 #心動 #恐怖電影 #錯誤歸因 #錯覺 #吊橋實驗 #情緒 #身體激發 #psychology #attribution'''
             hi2 = hi.split('---')
             ArtDict = {i.split()[0]:i.split()[1:] for i in hi2}
             TextArt = f'想看看 {get_message[0][1:]} 相關的文章?\n'
@@ -143,7 +147,7 @@ def handle_message(event):
             reply = TextSendMessage(text = result_text + '\n\n\n馬上前往了解更多心理學知識: https://www.instagram.com/')
             line_bot_api.reply_message(event.reply_token, reply)
         else:
-            reply = TextSendMessage(text = '請判斷您與以下每一個陳述句的符合程度\n1分，表示不符合\n2分，表示部分符合\n3分，表示符合\n4分表示完全符合\n\n請依照以下格式依序回應噢！\n-\n\nSexualAddiction\n13112 41124\n\n-\n1.我的性慾阻礙到了我的人際關係\n2.我的性行為及對性的想法造成我生活上的困擾\n3.我對性愛的渴望危害到我的日常生活\n4.我偶爾會因為我的性行為造成我違背承諾或失責\n5.我有時候會性飢渴到無法控制自己\n6.我發現我在工作時也會想到性\n7.我對性的想法與感受比對我自己本身還強烈\n8.我必須很努力的去控制我對性的想法及行為\n9.我比我希望的還要多地去想到性\n10.對我來說很難找到一個像我一樣想性愛的性伴侶')
+            reply = TextSendMessage(text = '請判斷您與以下每一個陳述句的相似程度\n1分，表示不像我\n2分，表示一點點像我\n3分，表示部分像我\n4分，表示非常像我\n\n請依照以下格式依序回應噢！\n-\n\nSexualAddiction\n13112 41124\n\n-\n1.我的性慾阻礙到了我的人際關係\n2.我的性行為及對性的想法造成我生活上的困擾\n3.我對性愛的渴望危害到我的日常生活\n4.我偶爾會因為我的性行為造成我違背承諾或失責\n5.我有時候會性飢渴到無法控制自己\n6.我發現我在工作時也會想到性\n7.我對性的想法與感受比對我自己本身還強烈\n8.我必須很努力的去控制我對性的想法及行為\n9.我比我希望的還要多地去想到性\n10.對我來說很難找到一個像我一樣想性愛的性伴侶')
             line_bot_api.reply_message(event.reply_token, reply)
     if get_message[0] == 'Psychopathy':
         if len(get_message) == 5:
